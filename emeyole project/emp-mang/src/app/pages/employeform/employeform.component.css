@@ -1,0 +1,194 @@
+:host {
+  display: block;
+  color: #17233b;
+}
+
+.employee-form-page {
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: 8px 0 32px;
+}
+
+.page-heading {
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #5274ed;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.2px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-size: clamp(23px, 2.5vw, 29px);
+  font-weight: 720;
+  letter-spacing: -0.8px;
+}
+
+.page-description,
+.card-heading p {
+  margin: 7px 0 0;
+  color: #78849a;
+  font-size: 12px;
+}
+
+.form-card {
+  overflow: hidden;
+  border: 1px solid #e8ecf3;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.card-heading {
+  padding: 19px 21px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.card-heading h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.card-heading p {
+  font-size: 11px;
+}
+
+.employee-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 16px;
+  padding: 21px;
+}
+
+.field {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #46536a;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.field > span > span,
+.gender-field legend span,
+.card-heading p span {
+  color: #c34b59;
+}
+
+.field input:not([type="radio"]),
+.field select {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  padding: 0 11px;
+  border: 1px solid #e1e6ef;
+  border-radius: 8px;
+  outline: none;
+  color: #17233b;
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+}
+
+.field input::placeholder {
+  color: #a0a9b8;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #8095f2;
+  box-shadow: 0 0 0 3px rgb(82 116 237 / 12%);
+}
+
+.gender-field legend {
+  margin-bottom: 10px;
+  padding: 0;
+  color: #46536a;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.radio-options {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 18px;
+}
+
+.radio-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #58657a;
+  font-size: 11px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.radio-options input {
+  accent-color: #5274ed;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 2px;
+}
+
+.submit-button {
+  min-height: 40px;
+  padding: 0 17px;
+  border: 1px solid #5274ed;
+  border-radius: 8px;
+  color: #fff;
+  background: #5274ed;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  border-color: #3f60d5;
+  background: #3f60d5;
+}
+
+.submit-button:focus-visible {
+  outline: 3px solid rgb(82 116 237 / 25%);
+  outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  .employee-form {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 17px;
+  }
+
+  .card-heading {
+    padding: 17px;
+  }
+
+  .field-full {
+    grid-column: auto;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+}

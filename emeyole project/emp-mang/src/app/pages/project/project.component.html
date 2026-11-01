@@ -1,0 +1,98 @@
+<main class="project-workspace">
+  <header class="workspace-header">
+    <div>
+      <p class="eyebrow">PROJECT WORKSPACE</p>
+      <h1>Manage projects</h1>
+      <p class="header-description">Keep delivery details, ownership, and client contacts in one place.</p>
+    </div>
+    <button class="add-project-button" type="button" (click)="showpannel()">Add project</button>
+  </header>
+
+  <div class="workspace-content">
+    <section class="portfolio" aria-labelledby="portfolio-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ACTIVE PORTFOLIO</p>
+          <h2 id="portfolio-title">Your projects</h2>
+        </div>
+        <span class="project-count">{{ projectList().length }} projects</span>
+      </div>
+
+      <div class="project-list">
+        <article class="project-card" *ngFor="let item of projectList()">
+          <div class="card-heading">
+            <span class="project-id">PRJ-{{ item.projectId }}</span>
+            <span class="project-status status-progress">In progress</span>
+          </div>
+          <h3>{{ item.projectName }}</h3>
+          <p class="client-name">{{ item.clientName }}</p>
+          <div class="project-facts">
+            <div>
+              <span class="fact-label">START DATE</span>
+              <strong>{{ item.startDate | date: 'dd MMM yyyy' }}</strong>
+            </div>
+            <div>
+              <span class="fact-label">LEAD</span>
+              <strong>{{ item.employeeName || 'Employee #' + item.leadByEmpId }}</strong>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="client-email" [href]="'mailto:' + item.emailId">{{ item.emailId }}</a>
+            <div class="card-actions">
+              <button class="edit-button" type="button">Edit</button>
+              <button class="delete-button" type="button">Delete</button>
+            </div>
+          </div>
+        </article>
+        <p *ngIf="projectList().length === 0">No projects found.</p>
+      </div>
+    </section>
+    <aside class="project-form-panel" id="project-form" aria-labelledby="form-title" [hidden]="!isboolen">
+      <div class="form-heading">
+        <div>
+          <p class="eyebrow">PROJECT DETAILS</p>
+          <h2 id="form-title">Add a project</h2>
+        </div>
+        <span class="form-step">01 / 01</span>
+      </div>
+
+      <form class="project-form" [formGroup]="projectform" (ngSubmit)="saveproject()">
+        <div class="form-grid">
+          <label>
+            Project name
+            <input type="text" formControlName="projectName" placeholder="e.g. Website redesign" required>
+          </label>
+          <label>
+            Client name
+            <input type="text" formControlName="clientName" placeholder="e.g. Northstar Labs" required>
+          </label>
+          <label>
+            Start date
+            <input type="date" formControlName="startDate" required>
+          </label>
+          <label>
+            Lead employee ID
+            <input type="number" formControlName="leadByEmpId" placeholder="e.g. 12" min="1" required>
+          </label>
+          <label>
+            Contact person
+            <input type="text" formControlName="contactPerson" placeholder="e.g. Maya Chen" required>
+          </label>
+          <label>
+            Contact number
+            <input type="tel" formControlName="contactNo" placeholder="e.g. +1 555 0100" required>
+          </label>
+          <label class="full-width">
+            Email address
+            <input type="email" formControlName="emailId" placeholder="client@example.com" required email>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="cancel-button" type="button" (click)="hidepannel()">Cancel</button>
+          <button class="save-button" type="submit" [disabled]="projectform.invalid">Save project</button>
+        </div>
+      </form>
+    </aside>
+  </div>
+</main>

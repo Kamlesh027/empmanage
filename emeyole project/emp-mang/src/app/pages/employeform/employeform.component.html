@@ -1,0 +1,71 @@
+<main class="employee-form-page">
+  <header class="page-heading">
+    <p class="eyebrow">PEOPLE</p>
+    <h1>Add employee</h1>
+    <p class="page-description">Enter the employee details to add them to your workspace.</p>
+  </header>
+
+  <section class="form-card" aria-labelledby="employee-details-title">
+    <div class="card-heading">
+      <h2 id="employee-details-title">Employee details</h2>
+      <p>Fields marked with <span aria-hidden="true">*</span> are required.</p>
+    </div>
+
+    <form class="employee-form" #empForm="ngForm" (ngSubmit)="onsaveemp()">
+      <label class="field field-full">
+        <span>Employee name <span aria-hidden="true">*</span></span>
+        <input type="text" name="employeeName" placeholder="e.g. Alex Morgan"
+               autocomplete="name" required [(ngModel)]="empobj.employeeName">
+      </label>
+
+      <label class="field">
+        <span>Contact number <span aria-hidden="true">*</span></span>
+        <input type="text" name="contactNo" placeholder="e.g. +1 555 0100"
+               autocomplete="tel" required [(ngModel)]="empobj.contactNo">
+      </label>
+
+      <label class="field">
+        <span>Email address <span aria-hidden="true">*</span></span>
+        <input type="text" name="emailId" placeholder="e.g. alex@company.com"
+               autocomplete="email" required email [(ngModel)]="empobj.emailId">
+      </label>
+
+      <label class="field">
+        <span>Department <span aria-hidden="true">*</span></span>
+        <select name="deptId" required [(ngModel)]="empobj.deptId" (ngModelChange)="onChange($event)">
+          <option value="" disabled>Select a department</option>
+          <option *ngFor="let item of parentdepList()" [ngValue]="item.departmentId">{{ item.departmentName }}</option>
+        </select>
+      </label>
+
+<label class="field">
+  <span>Role <span aria-hidden="true">*</span></span>
+ <select name="deptId" required [(ngModel)]="empobj.deptId">
+  <option [ngValue]="0" disabled>Select department</option>
+  <option *ngFor="let item of childdepList()" [ngValue]="item.childDeptId">{{ item.departmentName }}</option>
+</select>
+</label>
+
+      <fieldset class="field gender-field">
+        <legend>Gender <span aria-hidden="true">*</span></legend>
+        <div class="radio-options">
+          <label><input type="radio" name="gender" value="female" required [(ngModel)]="empobj.gender"> Female</label>
+          <label><input type="radio" name="gender" value="male" [(ngModel)]="empobj.gender"> Male</label>
+          <label><input type="radio" name="gender" value="other" [(ngModel)]="empobj.gender"> Other</label>
+        </div>
+      </fieldset>
+
+      <label class="field">
+        <span>Password <span aria-hidden="true">*</span></span>
+        <input type="password" name="password" placeholder="Enter a password"
+               autocomplete="new-password" required [(ngModel)]="empobj.password">
+      </label>
+
+      <div class="form-actions field-full">
+        <button class="submit-button" type="submit" [disabled]="empForm.invalid">
+          Add employee
+        </button>
+      </div>
+    </form>
+  </section>
+</main>

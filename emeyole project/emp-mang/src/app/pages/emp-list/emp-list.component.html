@@ -1,0 +1,79 @@
+<section class="employee-page" aria-labelledby="employee-title">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">PEOPLE</p>
+      <h2 id="employee-title">Employees</h2>
+      <p class="page-description">Keep your employee directory up to date.</p>
+    </div>
+
+    <div class="employee-count" aria-live="polite">
+      <span class="count-value">2</span>
+      <span>employees</span>
+    </div>
+  </div>
+
+  <section class="add-card" aria-labelledby="add-employee-title">
+    <div class="card-heading">
+      <div class="heading-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+      </div>
+      <div>
+        <h3 id="add-employee-title">Add an employee</h3>
+        <p>Open the employee form to add someone to your list.</p>
+      </div>
+    </div>
+
+    <a class="add-button" href="/admin/emp-form/0">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 5v14M5 12h14"></path>
+      </svg>
+      Add employee
+    </a>
+  </section>
+
+  <section class="list-card" aria-labelledby="employee-list-title">
+    <div class="list-heading">
+      <div>
+        <h3 id="employee-list-title">Employee list</h3>
+        <p>All employees in your workspace.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="employee-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            
+            <th>Role</th>
+            <th>Gender</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of empolylist$ | async; let i = index">
+              <td>{{ i + 1 }}</td>
+           
+                <td>{{ item.employeeName }}</td>
+                <td>{{ item.emailId }}</td>
+                <td>{{ item.contactNo }}</td>
+               
+                <td>{{ item.role }}</td>
+                <td>{{ item.gender }}</td>
+                <td class="text-end">
+                  <button class="btn-action edit" type="button" 
+                  routerLink="/admin/emp-form/{{item.employeeId}}">Edit</button>
+                  <button class="btn-action delete" type="button">Delete</button>
+                </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>

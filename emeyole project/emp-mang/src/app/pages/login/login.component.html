@@ -1,0 +1,87 @@
+<main class="login-page container-fluid min-vh-100 d-flex align-items-center justify-content-center py-4">
+  <section class="login-card card border-0 shadow-lg overflow-hidden w-100" aria-labelledby="login-title">
+    <div class="row g-0">
+      <aside class="welcome-panel col-lg-5 d-none d-lg-flex flex-column justify-content-between p-5 text-white">
+        <div class="d-flex align-items-center gap-2 fw-semibold fs-5">
+          <span class="brand-icon d-inline-flex align-items-center justify-content-center rounded-3" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M16 4.5 27 10.75v10.5L16 27.5 5 21.25v-10.5L16 4.5Z" stroke="currentColor" stroke-width="2" />
+              <path d="m11.5 16.25 3 2.75 6-6" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span>People<span class="brand-accent">Desk</span></span>
+        </div>
+
+        <div class="welcome-copy">
+          <p class="small fw-semibold text-uppercase mb-3">Your team, in sync</p>
+          <h1 class="display-6 fw-semibold mb-3">Good work starts with great people.</h1>
+          <p class="mb-0 opacity-75">One simple place to bring your people and projects together.</p>
+        </div>
+
+        <p class="small mb-0 opacity-75">A little more human, every workday.</p>
+      </aside>
+
+      <div class="col-12 col-lg-7">
+        <div class="login-content p-4 p-sm-5">
+          <div class="mobile-brand d-flex d-lg-none align-items-center gap-2 fw-semibold fs-5 mb-5">
+            <span class="brand-icon d-inline-flex align-items-center justify-content-center rounded-3" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 4.5 27 10.75v10.5L16 27.5 5 21.25v-10.5L16 4.5Z" stroke="currentColor" stroke-width="2" />
+                <path d="m11.5 16.25 3 2.75 6-6" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span>People<span class="brand-accent">Desk</span></span>
+          </div>
+
+          <header class="mb-4">
+            <p class="section-kicker small fw-semibold text-uppercase mb-2">Welcome back</p>
+            <h2 id="login-title" class="h3 fw-semibold mb-2">Sign in to your account</h2>
+            <p class="text-secondary mb-0">Enter your details below to continue.</p>
+          </header>
+
+          <form (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label for="userName" class="form-label fw-medium">Username</label>
+              <input
+                id="userName"
+                name="userName"
+                type="text"
+                [(ngModel)]="loginobj.userName"
+                class="form-control form-control-lg"
+                placeholder="Enter your username"
+                autocomplete="username"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="password" class="form-label fw-medium">Password</label>
+              <div class="input-group input-group-lg">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  [(ngModel)]="loginobj.password"
+                  class="form-control"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                  required
+                />
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg w-100 login-button" type="submit">
+              Sign in <span class="ms-1" aria-hidden="true">&rarr;</span>
+            </button>
+           
+          </form>
+
+          <p class="security-note small text-secondary text-center mt-4 mb-0">
+            <span class="text-success me-1" aria-hidden="true">&#10003;</span>
+            Your information is protected and secure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
